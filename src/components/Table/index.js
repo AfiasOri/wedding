@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { Table } from 'semantic-ui-react';
 
 const cmpr = (a, b, col) => (a[col] < b[col] ? -1 : a[col] > b[col] ? 1 : 0);
@@ -19,15 +19,22 @@ const reducer = (state, action) => {
 				data: [...state.data.sort((a, b) => cmpr(a, b, action.column))],
 				direction: 'ascending',
 			};
+
+		case 'NEW_ITEMS':
+			return { ...state, data: action.data };
 		default:
 			throw new Error();
 	}
 };
 
 export default ({ items, color }) => {
-	const initialState = { column: null, data: [...items], direction: null };
+	const initialState = { column: null, data: items, direction: null };
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const { column, data, direction } = state;
+
+	useEffect(() => {
+		dispatch({ type: 'NEW_ITEMS', data: items });
+	}, [items]);
 
 	return (
 		<Table striped celled sortable color={color}>
@@ -77,7 +84,7 @@ export default ({ items, color }) => {
 					const formattedGift = gift.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + '₪';
 					const formattedAverage = guests
 						? (gift / guests).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + '₪'
-						: formattedGift + '₪';
+						: formattedGift;
 
 					return (
 						<Table.Row key={i}>

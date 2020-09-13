@@ -1,23 +1,47 @@
-import React from 'react';
-import { Container, Header, Icon, Divider } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Container, Header, Icon, Divider, Button, Segment } from 'semantic-ui-react';
 
 import Search from 'components/Search';
 import Table from 'components/Table';
-const seed = require('seed.json');
 
-export default () => (
-	<Container>
-		<Divider hidden />
-		<a href="/">
-			<Header as="h1" textAlign="center" color="teal" icon>
+const brit = require('seed/brit.json');
+const wedding = require('seed/wedding.json');
+
+export default () => {
+	const [event, setEvent] = useState('wedding');
+	const eventParams = {
+		wedding: {
+			color: 'violet',
+			data: wedding,
+		},
+		brit: {
+			color: 'teal',
+			data: brit,
+		},
+	};
+
+	return (
+		<Container>
+			<Divider hidden />
+			<Header as="h1" textAlign="center" color="olive" icon>
 				<Icon name="dollar sign" circular />
-				Wedding
+				JUBBOT
 			</Header>
-		</a>
-		<Search items={seed} />
-		<Header color="violet" textAlign="center">
-			כל המוזמנים
-		</Header>
-		<Table items={seed} color="violet" />
-	</Container>
-);
+			<Divider hidden />
+			<Segment textAlign="center">
+				<Button color={eventParams.brit.color} onClick={() => setEvent('brit')}>
+					ברית
+				</Button>
+				<Button color={eventParams.wedding.color} onClick={() => setEvent('wedding')}>
+					חתונה
+				</Button>
+			</Segment>
+			<Divider hidden />
+			<Search items={eventParams[event].data} />
+			<Header color={eventParams[event].color} textAlign="center">
+				כל המוזמנים
+			</Header>
+			<Table items={eventParams[event].data} color={eventParams[event].color} />
+		</Container>
+	);
+};
