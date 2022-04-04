@@ -1,0 +1,56 @@
+[
+{
+		"name": "סבתא סבטלנה",
+		"guests": 1,
+		"gift": 2000,
+		"side": ""
+	},
+  {
+		"name": "חגית",
+		"guests": 1,
+		"gift": 800,
+		"side": ""
+	},
+  {
+		"name": "פדידה",
+		"guests": 1,
+		"gift": 1000,
+		"side": ""
+	},
+  {
+		"name": "ליאורה",
+		"guests": 1,
+		"gift": 1000,
+		"side": ""
+	},
+    {
+		"name": "אלי",
+		"guests": 1,
+		"gift": 400,
+		"side": ""
+	},
+    {
+		"name": "הורים",
+		"guests": 1,
+		"gift": 5000,
+		"side": ""
+	},
+    {
+		"name": "קרן",
+		"guests": 1,
+		"gift": 500,
+		"side": ""
+	},
+    {
+		"name": "רצון",
+		"guests": 1,
+		"gift": 1000,
+		"side": ""
+	},
+    {
+		"name": "בר",
+		"guests": 1,
+		"gift": 1000,
+		"side": ""
+	},
+]
