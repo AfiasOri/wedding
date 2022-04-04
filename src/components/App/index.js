@@ -6,6 +6,7 @@ import Table from 'components/Table';
 
 const brit = require('seed/brit.json');
 const wedding = require('seed/wedding.json');
+const maya = require('seed/maya.json');
 
 export default () => {
 	const [event, setEvent] = useState('wedding');
@@ -18,6 +19,10 @@ export default () => {
 			color: 'teal',
 			data: brit,
 		},
+		maya: {
+			color: 'orange',
+			data: maya,
+		}
 	};
 
 	return (
@@ -29,6 +34,9 @@ export default () => {
 			</Header>
 			<Divider hidden />
 			<Segment textAlign="center">
+				<Button color={eventParams.maya.color} onClick={() => setEvent('maya')}>
+					מאיה
+				</Button>
 				<Button color={eventParams.brit.color} onClick={() => setEvent('brit')}>
 					ברית
 				</Button>
