@@ -18,7 +18,7 @@ export default ({ items }) => {
 		} else {
 			setState(prev => ({ ...prev, results: [] }));
 		}
-	}, [debouncedValue, items]);
+	}, [debouncedValue, items, state.value]);
 
 	return (
 		<>
