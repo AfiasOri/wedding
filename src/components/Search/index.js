@@ -12,13 +12,13 @@ export default ({ items }) => {
 	useEffect(() => {
 		let results;
 		if (debouncedValue) {
-			setState({ ...state, loading: true });
+			setState(prev => ({ ...prev, loading: true }));
 			results = [...items.filter(el => el.name.includes(state.value))];
-			if (results.length) setState({ ...state, loading: false, results: results });
+			if (results.length) setState(prev => ({ ...prev, loading: false, results: results }));
 		} else {
-			setState({ ...state, results: [] });
+			setState(prev => ({ ...prev, results: [] }));
 		}
-	}, [debouncedValue]);
+	}, [debouncedValue, items, state.value]);
 
 	return (
 		<>
